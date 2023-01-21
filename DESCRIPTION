@@ -26,3 +26,5 @@ Imports:
     tibble,
     tidyr,
     vroom
+URL: https://github.com/bgautijonsson/loftgaedimyndir
+BugReports: https://github.com/bgautijonsson/loftgaedimyndir/issues
