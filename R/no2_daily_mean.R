@@ -89,11 +89,7 @@ p2 <- plot_dat |>
       "2019 - 2022",
       "</b>"
     ),
-    caption = str_c(
-      "Byggt á gögnum frá loftgaedi.is",
-      "\n",
-      "Gögn og kóði: https://github.com/bgautijonsson/loftgaedi"
-    )
+    caption = caption
   )
 
 ggsave(

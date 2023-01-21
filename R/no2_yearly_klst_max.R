@@ -43,11 +43,7 @@ p3 <- d |>
     y = NULL,
     title = "Hversu oft hefur NO2 farið yfir klukkustundarmörkin undanfarið ár?",
     subtitle = "Leyfilegt klukkustundargildi er allt að 200 míkrógrömm á rúmmetra",
-    caption = str_c(
-      "Byggt á gögnum frá loftgaedi.is",
-      "\n",
-      "Gögn og kóði: https://github.com/bgautijonsson/loftgaedi"
-    )
+    caption = caption
   )
 
 

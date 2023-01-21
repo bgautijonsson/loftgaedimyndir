@@ -40,11 +40,7 @@ p <- d |>
     y = NULL,
     title = "Hvert er meðaltal NO2 mælinga undanfarið ár?",
     subtitle = "Ársmörkin eru eru allt að 40 míkrógrömm á rúmmetra",
-    caption = str_c(
-      "Byggt á gögnum frá loftgaedi.is",
-      "\n",
-      "Gögn og kóði: https://github.com/bgautijonsson/loftgaedi"
-    )
+    caption = caption
   )
 
 

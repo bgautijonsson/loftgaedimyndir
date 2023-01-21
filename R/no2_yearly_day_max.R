@@ -44,11 +44,7 @@ p4 <- d |>
     y = NULL,
     title = "Hversu oft hefur sólarhringsmeðaltal NO2 farið yfir mörkin undanfarið ár?",
     subtitle = "Sólarhringsheilsuverndarmörkin eru allt að 75 míkrógrömm á rúmmetra",
-    caption = str_c(
-      "Byggt á gögnum frá loftgaedi.is",
-      "\n",
-      "Gögn og kóði: https://github.com/bgautijonsson/loftgaedi"
-    )
+    caption = caption
   )
 
 
