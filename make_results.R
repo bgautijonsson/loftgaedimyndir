@@ -15,6 +15,17 @@ library(stringr)
 library(slider)
 library(loftgaedi)
 theme_set(theme_metill())
+Sys.setlocale("LC_ALL", "is_IS.UTF-8")
+
+my_date_labels <- function(dates) {
+  dagur <- day(dates)
+  ifelse(
+    dagur == 1,
+    format(dates, "%d\n%B"),
+    format(dates, "%d")
+  )
+}
+
 
 caption <- str_c(
   "Byggt á gögnum frá loftgaedi.is",

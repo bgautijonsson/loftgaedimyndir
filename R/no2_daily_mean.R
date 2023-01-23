@@ -1,5 +1,7 @@
 colour_2023 <- "black"
+  
 colour_other <- "grey70"
+  
 
 plot_dat <- d |> 
   filter(
@@ -7,19 +9,17 @@ plot_dat <- d |>
   ) |> 
   mutate(
     month = month(dagsetning),
+    day = day(dagsetning),
     year = year(dagsetning),
-    yday = yday(dagsetning)
+    yday = yday(dagsetning),
+    plot_date = clock::date_build(year = 2020, month = month, day = day)
   ) |> 
   filter(yday <= day_stop) |> 
-  pivot_longer(c(pm10:loftthr)) |> 
-  group_by(year, yday, station_name, name) |> 
+  group_by(year, month, day, plot_date, yday, station_name) |> 
   summarise(
-    max = max(value, na.rm = T),
-    mean = mean(value, na.rm = T),
+    max = max(no2, na.rm = T),
+    mean = mean(no2, na.rm = T),
     .groups = "drop"
-  ) |> 
-  filter(
-    name %in% c("no2")
   ) |> 
   drop_na() |> 
   mutate(
@@ -28,7 +28,7 @@ plot_dat <- d |>
   )
 
 p2 <- plot_dat |> 
-  ggplot(aes(yday, mean)) +
+  ggplot(aes(plot_date, mean)) +
   geom_texthline(
     yintercept = 75,
     lty = 2, 
@@ -36,7 +36,7 @@ p2 <- plot_dat |>
     size = 4, 
     linewidth = 0.3, 
     label = "Dagsmörk", 
-    hjust = 0.4
+    hjust = 0.3
   ) +
   geom_line(
     data = plot_dat |> filter(year != 2023),
@@ -56,9 +56,10 @@ p2 <- plot_dat |>
     data = plot_dat |> filter(year == 2023),
     aes(group = year, col = colour, size = linewidth)
   ) +
-  scale_x_continuous(
-    breaks = seq_len(day_stop),
-    labels = label_number(suffix = ".")
+  scale_x_date(
+    breaks = date_breaks("day"),
+    labels = my_date_labels,
+    expand = expansion(add = 0.2)
   ) +
   scale_y_continuous(
     limits = c(0, 200),
